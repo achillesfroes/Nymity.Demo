@@ -1,0 +1,25 @@
+<h1>Orders</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Company Name</th>
+    <th>Contact Name</th>
+    <th>Order Date</th>
+    <th>Ship Via</th>
+    <th>Seller</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{order.CompanyName}}</td>
+      <td>{{order.ContactName}}</td>
+      <td>{{order.OrderDate}}</td>
+      <td>{{order.ShipperName}}</td>
+      <td>{{order.SellerName}}</td>
+    </tr>
+  </tbody>
+</table>
+<nav>
+  <ul class="pager">
+    <li><a (click)="changePage(-1)">Previous</a></li>
+    <li><a (click)="changePage(1)">Next</a></li>
+  </ul>
+</nav>

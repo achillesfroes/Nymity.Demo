@@ -1,0 +1,19 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+      <div class="navbar-header">
+          <a routerLink="/welcome" routerLinkActive="active" class="navbar-brand">Nymity Demo</a>
+      </div>
+      <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+          </ul>
+      </div>
+  </div>
+</div>
+<div class="container body-content">
+  <router-outlet></router-outlet>
+  <hr />
+  <footer>
+      <p>&copy; Nymity Demo - By Achilles Fróes</p>
+  </footer>
+</div>
