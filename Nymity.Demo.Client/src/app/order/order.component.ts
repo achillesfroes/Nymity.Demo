@@ -9,7 +9,9 @@ import { OrderService } from '../services/order.service';
 export class OrderComponent implements OnInit {
 
   page:number;
+  total:number;
   orders:any;
+  orderSelected:any;
 
   constructor(private orderService:OrderService) { }
 
@@ -18,21 +20,22 @@ export class OrderComponent implements OnInit {
     this.getOrders()
   }
 
-  changePage(count:number) {
-
-    if(this.page > 0){
-      this.page += count;
-    }
-
-    this.getOrders()
-  }
-
-  hasPrevious() : boolean {
-    return !(this.page == 1);
-  }
-
   getOrders(){
-    this.orderService.getAll(this.page).subscribe(orders => { this.orders =  orders});
+    this.orderSelected = null;
+
+    this.orderService.getAll(this.page).subscribe(orders => {
+      this.orders =  orders.List;
+      this.total = orders.TotalCount/10;
+    });
+  }
+
+  onSelect(order: any): void {
+    if (this.orderSelected === order) {
+      this.orderSelected = null;
+    }
+    else{
+      this.orderSelected = order;
+    }
   }
 
 }

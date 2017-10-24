@@ -1,4 +1,5 @@
-﻿using Nymity.Demo.Domain.Models;
+﻿using Nymity.Demo.Domain.Collections;
+using Nymity.Demo.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Nymity.Demo.Domain.Interfaces.Repository
 {
     public interface IOrderRepository
     {
-        List<Order> GetAllPagged(int page);
+        PaggedCollection<Order> GetAllPagged(int page);
     }
 }

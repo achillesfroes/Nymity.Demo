@@ -6,20 +6,22 @@
     <th>Order Date</th>
     <th>Ship Via</th>
     <th>Seller</th>
+    <th></th>
   </tr>
   <tbody>
-    <tr *ngFor="let order of orders">
+    <tr *ngFor="let order of orders" [class.warning]="order === orderSelected">
       <td>{{order.CompanyName}}</td>
       <td>{{order.ContactName}}</td>
       <td>{{order.OrderDate}}</td>
       <td>{{order.ShipperName}}</td>
       <td>{{order.SellerName}}</td>
+      <td><button type="button" (click)="onSelect(order)" class="btn btn-default">Select</button></td>
     </tr>
   </tbody>
 </table>
-<nav>
-  <ul class="pager">
-    <li><a (click)="changePage(-1)">Previous</a></li>
-    <li><a (click)="changePage(1)">Next</a></li>
-  </ul>
-</nav>
+
+<ngb-pagination [collectionSize]="total" [(page)]="page" aria-label="Default pagination" (pageChange)="getOrders()"></ngb-pagination>
+
+<span *ngIf="orderSelected">
+<app-order-detail [OrderId]="orderSelected.Id"></app-order-detail>
+</span>

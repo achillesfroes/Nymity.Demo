@@ -1,4 +1,5 @@
-﻿using Nymity.Demo.Domain.DTO;
+﻿using Nymity.Demo.Domain.Collections;
+using Nymity.Demo.Domain.DTO;
 using Nymity.Demo.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Nymity.Demo.Domain.Interfaces.Service
 {
     public interface IOrderService
     {
-        List<OrderDTO> GetOrders(int page);
+        PaggedCollection<OrderDTO> GetOrders(int page);
 
         List<OrderDetail> GetOrderDetailsByOrderId(int orderId);
     }

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\PaggedCollection.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="Interfaces\Repository\IOrderDetailRepository.cs" />
     <Compile Include="Interfaces\Repository\IOrderRepository.cs" />

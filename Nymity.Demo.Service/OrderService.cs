@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Nymity.Demo.Domain.Models;
 using Nymity.Demo.Domain.Interfaces.Repository;
 using Nymity.Demo.Domain.DTO;
+using Nymity.Demo.Domain.Collections;
 
 namespace Nymity.Demo.Service
 {
@@ -27,13 +28,18 @@ namespace Nymity.Demo.Service
             return orderDetails;
         }
 
-        public List<OrderDTO> GetOrders(int page)
+        public PaggedCollection<OrderDTO> GetOrders(int page)
         {
-            List<Order> orders = orderRepository.GetAllPagged(page);
+            PaggedCollection<Order> ordersPagged = orderRepository.GetAllPagged(page);
 
-            List<OrderDTO> ordersDTO = orders.Select(o => OrderDTO.ToDTO(o)).ToList();
+            List<OrderDTO> ordersDTO = ordersPagged.List.Select(o => OrderDTO.ToDTO(o)).ToList();
 
-            return ordersDTO;
+            PaggedCollection<OrderDTO> ordersDTOPagged = new PaggedCollection<OrderDTO>();
+
+            ordersDTOPagged.TotalCount = ordersPagged.TotalCount;
+            ordersDTOPagged.List = ordersDTO;
+
+            return ordersDTOPagged;
         }
     }
 }

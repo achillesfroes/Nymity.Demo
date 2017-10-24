@@ -3,7 +3,7 @@ using System.Web.Http;
 
 namespace Nymity.Demo.WebApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("orders")]
     public class OrdersController : ApiController
     {

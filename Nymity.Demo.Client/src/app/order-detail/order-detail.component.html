@@ -1,0 +1,19 @@
+<h3>Order Details</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Product Name</th>
+    <th>Unit Price</th>
+    <th>Quantity</th>
+    <th>Quantity Per Unit</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let orderDetail of orderDetails">
+      <td>{{orderDetail.Product.ProductName}}</td>
+      <td>{{orderDetail.UnitPrice | currency}}</td>
+      <td>{{orderDetail.Quantity}}</td>
+      <td>{{orderDetail.Product.QuantityPerUnit}}</td>
+    </tr>
+  </tbody>
+</table>
+
+

@@ -14,6 +14,7 @@ namespace Nymity.Demo.Domain.DTO
         public string OrderDate { get; set; }
         public string ShipperName { get; set; }
         public string SellerName { get; set; }
+        public int Id { get; set; }
 
         public static OrderDTO ToDTO(Order order)
         {
@@ -23,6 +24,7 @@ namespace Nymity.Demo.Domain.DTO
             orderDTO.ShipperName = order.Shipper.CompanyName;
             orderDTO.SellerName = $"{order.Employee.LastName},{order.Employee.FirstName}";
             orderDTO.OrderDate = order.OrderDate?.ToShortDateString() ?? null;
+            orderDTO.Id = order.OrderId;
 
             return orderDTO;
         }
